@@ -1,0 +1,18 @@
+/* Style the labels */
+label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Style the input fields */
+input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+
