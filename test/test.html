@@ -1,55 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Login Form</title>
-    <link rel="stylesheet" href="test.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+  <script src="https://unpkg.com/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 
-    <script src="test.js"></script>
-    <script src="../js/cookies_manager.js"></script>
-  </head>
-  <body onload="CheckCookies()">
-    <div id="result" style="border-color: blue"></div>
-    <!--Login Modal --------------------------------------------->
-    <div class="modal fade" id="login-modal" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              &times;
-            </button>
-            <h4 class="modal-title">Welcome to eBos CRM</h4>
-          </div>
-          <div class="modal-body" >
-            <form style="max-height: 200px;">
-              <label for="username">Username:</label>
-              <input type="text" id="username" name="username" /><br /><br />
+<script>
 
-              <label for="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-              /><br /><br />
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-success"
-              onclick="CheckCredentials()"
-            >
-              Login
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!------------------------------------------------------------------->
-    <button type="button" onclick="CheckCookie()">Check Cookie</button>
-    <button type="button" onclick="DeleteCookie()">Delete Cookie</button>
-  </body>
+function checkCookie() {
+  let user = Cookies.get('name') ;
+  if ( user !== undefined ) {
+    alert("Welcome again " + user);
+  } else {
+     user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+      //Cookies.set("name", user);
+      document.cookie = "name=" + user + "; expires=Thu, 18 Dec 2020 12:00:00 UTC; path=/";
+     }
+  }
+}
+</script>
+</head>
+
+<body onload="checkCookie()"></body>
+
 </html>

@@ -1,14 +1,17 @@
 $(() => {
-  let user = getCookie("username");
-  if (user === "") {
+  //let user = getCookie("username");
+  let user =Cookies.get('username')
+  if (user === "" || user === undefined) {
     $("#login-button").show();
     $("#logout-button").hide();
+    return;
 
   }
-  if (user !== "") {
+  if (user !== "" && user !== undefined) {
     $("#login-button").hide();
     $("#logout-button").show();
-    MenuShow(getCookie("role"));
+    //MenuShow(getCookie("role"));
+    MenuShow(Cookies.get('role'));
   }
 });
 
@@ -46,8 +49,10 @@ const PostCredentials = (username, password) => {
         $("#login-button").hide();
         $("#logout-button").show();
 
-        setCookie("username", data.name, 2);
-        setCookie("role", data.role, 2);
+        //setCookie("username", data.name, 2);
+        //setCookie("role", data.role, 2);
+        Cookies.set("username", data.name);
+        Cookies.set("role", data.role);
         MenuShow(data.role);
    
         //setCookie("username", data.name, 30);
